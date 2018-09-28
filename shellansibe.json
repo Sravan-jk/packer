@@ -1,0 +1,22 @@
+{
+    "builders":
+    [
+        {
+            "ami_name": "packertest3{{timestamp}}",
+            "region": "us-west-2",
+            "access_key": "",
+            "secret_key": "",
+            "ssh_username": "ubuntu",
+            "source_ami": "ami-09bfeda7337019518",
+            "instance_type": "t2.micro",
+            "type": "amazon-ebs"
+        }
+    ],
+    "provisioners":
+    [
+        {
+            "type": "shell",
+            "script": "./shellprovision.sh"
+        }
+    ]
+}

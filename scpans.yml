@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: create user
+    user:
+      name: newansible
+      shell: /bin/bash
+      state: present
+  - name: install tree
+    apt:
+      name: tree
+      state: present

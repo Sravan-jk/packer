@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: Upgrading Packages
+    apt:
+      update_cache: yes
+  - name: Installing Git
+    apt:
+      name: git
+      state: present
+  - name: Installing Tree
+    apt:
+      name: tree
+      state: present

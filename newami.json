@@ -1,0 +1,27 @@
+{
+    "variables":
+    {
+        "access": "AKIAIPXJ7TLUGQIB4L4A",
+        "secret": "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"
+    },
+    "builders": 
+    [
+        {
+            "type": "amazon-ebs",
+            "access_key": "{{user `access`}}",
+            "secret_key": "{{user `secret`}}",
+            "region": "us-west-2",
+            "instance_type": "t2.micro",
+            "ssh_username": "ubuntu",
+            "ami_name": "packertest1",
+            "source_ami": "ami-09bfeda7337019518"
+        }
+    ],
+    "provisioners":
+    [
+        {
+            "type": "shell",
+            "script": "./provision.sh"
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "variables":
+    {
+        "access_key": "",
+        "secret_key": "",
+        "region": "us-west-2",
+        "ami_name": "packer4{{timestamp}}",
+        "ssh_username": "ubuntu",
+        "source_ami": "ami-09bfeda7337019518"
+   },
+   "builders":
+   [
+       {
+           "type": "amazon-ebs",
+           "instance_type": "t2.micro",
+           "access_key": "{{user `access_key`}}",
+           "secret_key": "{{user `secret_key`}}",
+           "source_ami": "{{user `source_ami`}}",
+           "ami_name": "{{user `ami_name`}}",
+           "ssh_username": "{{user `ssh_username`}}",
+           "region": "{{user `region`}}"
+       }
+   ],
+   "provisioners":
+   [
+       {
+           "type": "shell",
+           "script": "./newpro.sh"
+       },
+       {
+           "type": "ansible-local",
+           "playbook_file": "scpans.yml"
+       }
+   ]
+}
